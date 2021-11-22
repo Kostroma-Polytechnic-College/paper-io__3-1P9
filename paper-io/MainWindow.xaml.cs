@@ -26,3 +26,29 @@ namespace paper_io
         }
     }
 }
+
+class Game
+{
+    private Player[,] players; //Кол-во игроков
+
+    public Game(int Players)
+    {
+        players = new Player[Players * 10, Players * 10];
+    }
+}
+
+class Player
+{
+    private int x; //где?
+    private int y; //где №2?
+    private bool life; //Сдох?
+    private Color colorOfPlayer; //Негр?
+
+    public Player(int X, int Y, bool Life, Color color)
+    {
+        x = X;
+        y = Y;
+        life = Life;
+        colorOfPlayer = color;
+    }
+}
