@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C62A58F3-ABFD-4116-85CB-592EB3C36EFE}</ProjectGuid>
+    <ProjectGuid>{29DC477A-90EA-49E0-AEF9-A18BF2D399AC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>paper_io</RootNamespace>
     <AssemblyName>paper-io</AssemblyName>
