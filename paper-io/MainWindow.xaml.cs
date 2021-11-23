@@ -24,5 +24,27 @@ namespace paper_io
         {
             InitializeComponent();
         }
+        private void StartButton(object sender, RoutedEventArgs e)
+        {
+            string result;
+            result = EnterField.Text;
+            switch (result)
+            {
+                case 
+
+            }
+        }
+
+        private void EnterFieldChanged(object sender, TextChangedEventArgs e)
+        {
+            string result = "";
+            foreach (char item in EnterField.Text)
+            {
+                if (char.IsNumber(item))
+                    result += item;
+            }
+            EnterField.Text = result;
+
+        }
     }
 }
