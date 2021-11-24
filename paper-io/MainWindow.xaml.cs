@@ -29,7 +29,8 @@ namespace paper_io
 
 class Game
 {
-    private Player[,] players; //Кол-во игроков
+    /// Кол-во игроков
+    private Player[,] players; 
 
     public Game(int Players)
     {
@@ -39,10 +40,21 @@ class Game
 
 class Player
 {
-    private int x; //где?
-    private int y; //где №2?
-    private bool life; //Сдох?
-    private Color colorOfPlayer; //Негр?
+    enum Directions
+    {
+        Up,
+        Down,
+        Left,
+        Right
+    }
+    /// перемещение по x
+    int x;
+    /// перемещение по y
+    int y;
+    /// жызн
+    bool life;
+    /// Цвет игрока
+    Color colorOfPlayer;
 
     public Player(int X, int Y, bool Life, Color color)
     {
