@@ -26,13 +26,7 @@ namespace paper_io
         }
         private void StartButton(object sender, RoutedEventArgs e)
         {
-            string result;
-            result = EnterField.Text;
-            switch (result)
-            {
-                case 
-
-            }
+            
         }
 
         private void EnterFieldChanged(object sender, TextChangedEventArgs e)
@@ -44,16 +38,14 @@ namespace paper_io
                     result += item;
             }
             EnterField.Text = result;
-
         }
     }
 }
 
 class Game
 {
-    private Player[,] players; //Кол-во игроков
-
-    public Game(int Players)
+    Player[,] players; 
+    public Game(int Players )
     {
         players = new Player[Players * 10, Players * 10];
     }

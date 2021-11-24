@@ -6,10 +6,12 @@
         xmlns:local="clr-namespace:paper_io"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button Content="Запустить игру" HorizontalAlignment="Left" Margin="588,168,0,0" VerticalAlignment="Top" Width="127"/>
+    <Grid Height="419" VerticalAlignment="Bottom">
+        <Button Content="Запустить игру" HorizontalAlignment="Left" Margin="557,205,0,0" VerticalAlignment="Top" Width="148" Height="54"/>
         <ComboBox HorizontalAlignment="Left" Height="1" Margin="348,205,0,0" VerticalAlignment="Top" Width="4"/>
-        <TextBox x:Name="EnterField" HorizontalAlignment="Left" Height="20" Margin="232,174,0,0" TextWrapping="Wrap" Text="Введите кол-во игроков" VerticalAlignment="Top"   Width="151" MaxLength="2" TextChanged="EnterFieldChanged"/>
+        <Slider  Maximum="24" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" Name="slValue" Margin="163,254,355,108" ValueChanged="slValue_ValueChanged" />
+        <TextBox Text="{Binding ElementName=slValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Center" Margin="252,205,444,172" TextChanged="EnterFieldChanged" FontSize="24" />
+        <Label Content="Укажите количесво игроков" HorizontalAlignment="Left" Margin="163,135,0,0" VerticalAlignment="Top" Height="55" Width="278" FlowDirection="RightToLeft" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
 
     </Grid>
 </Window>
