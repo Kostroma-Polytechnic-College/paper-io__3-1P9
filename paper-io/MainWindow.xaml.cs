@@ -23,6 +23,7 @@ namespace paper_io
         public MainWindow()
         {
             InitializeComponent();
+
         }
     }
 }
@@ -37,16 +38,15 @@ class Game
         players = new Player[Players * 10, Players * 10];
     }
 }
-
+enum Direction
+{
+    Up,
+    Down,
+    Left,
+    Right
+}
 class Player
 {
-    enum Directions
-    {
-        Up,
-        Down,
-        Left,
-        Right
-    }
     /// перемещение по x
     int x;
     /// перемещение по y
