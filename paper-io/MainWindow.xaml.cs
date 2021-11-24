@@ -26,10 +26,9 @@ namespace paper_io
         }
         private void StartButton(object sender, RoutedEventArgs e)
         {
-            
-        }
 
-        private void EnterFieldChanged(object sender, TextChangedEventArgs e)
+        }
+        private void EnterField_TextChanged(object sender, TextChangedEventArgs e)
         {
             string result = "";
             foreach (char item in EnterField.Text)
@@ -40,29 +39,29 @@ namespace paper_io
             EnterField.Text = result;
         }
     }
-}
 
-class Game
-{
-    Player[,] players; 
-    public Game(int Players )
+    class Game
     {
-        players = new Player[Players * 10, Players * 10];
+        Player[,] players;
+        public Game(int Players)
+        {
+            players = new Player[Players * 10, Players * 10];
+        }
     }
-}
 
-class Player
-{
-    private int x; //где?
-    private int y; //где №2?
-    private bool life; //Сдох?
-    private Color colorOfPlayer; //Негр?
-
-    public Player(int X, int Y, bool Life, Color color)
+    class Player
     {
-        x = X;
-        y = Y;
-        life = Life;
-        colorOfPlayer = color;
+        private int x; //где?
+        private int y; //где №2?
+        private bool life; //Сдох?
+        private Color colorOfPlayer; //Негр?
+
+        public Player(int X, int Y, bool Life, Color color)
+        {
+            x = X;
+            y = Y;
+            life = Life;
+            colorOfPlayer = color;
+        }
     }
 }
