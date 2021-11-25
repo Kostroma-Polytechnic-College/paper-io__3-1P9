@@ -23,10 +23,22 @@ namespace paper_io
         public MainWindow()
         {
             InitializeComponent();
+            Player player = new Player(0, 0, Color.FromArgb(220, 220, 220, 220));
+
+
         }
         private void StartButton(object sender, RoutedEventArgs e)
         {
+            Game game = new Game(Convert.ToByte(EnterField.Text));
 
+
+            //for (int i = 0; i < game.players.GetLength(0); i++)
+            //{
+            //    for (int j = 0; j < game.players.GetLength(1); j++)
+            //    {
+            //        MessageBox.Show(Convert.ToString(game.players[i, j]));
+            //    }
+            //}
         }
         private void EnterField_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -42,26 +54,40 @@ namespace paper_io
 
     class Game
     {
-        Player[,] players;
-        public Game(int Players)
+        /// <summary>
+        /// Количество игроков
+        /// </summary>
+        public Player[,] Players { get; set; }
+        public Game(byte players)
         {
-            players = new Player[Players * 10, Players * 10];
+            Players = new Player[players * 10, players * 10];
         }
     }
 
     class Player
     {
-        private int x; //где?
-        private int y; //где №2?
-        private bool life; //Сдох?
-        private Color colorOfPlayer; //Негр?
+        /// <summary>
+        /// Координата расположения игрока по X
+        /// </summary>
+        public int X { get; set; }
+        /// <summary>
+        /// Координата расположения игрока по Y
+        /// </summary>
+        public int Y { get; set; }
+        /// <summary>
+        /// Цвет игрока
+        /// </summary>
+        public Color ColorOfPlayer { get; set; }
+        /// <summary>
+        /// Жизнь игрока
+        /// </summary>
+        private readonly bool life = true; 
 
-        public Player(int X, int Y, bool Life, Color color)
+        public Player(int x, int y, Color color)
         {
-            x = X;
-            y = Y;
-            life = Life;
-            colorOfPlayer = color;
+            X = x;
+            Y = y;
+            ColorOfPlayer = color;
         }
     }
 }
