@@ -6,7 +6,10 @@ namespace paper_io
 {
     public class Game
     {
-        private Player[,] gamematrix; //Кол-во игроков
+        /// <summary>
+        /// Кол-во игроков
+        /// </summary>
+        private Player[,] gamematrix; 
         int heightmatrix;
         public Game(int players)
         {
@@ -18,7 +21,6 @@ namespace paper_io
         /// </summary>
         public void StartGame()
         {
-            //int[строка , столбец]
             List<Coordinate> coordinates = new List<Coordinate>();
             for (int originalline = 0; originalline < heightmatrix - 2; originalline++)
             {
