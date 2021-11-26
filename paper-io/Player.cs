@@ -1,24 +1,33 @@
-﻿using System.Windows.Media;
+﻿using System;
+using System.Windows;
+using System.Windows.Media;
 
 namespace paper_io
 {
     class Player
     {
-        private int x; //где?
-        private int y; //где №2?
-        private bool life; //Сдох?
-        private Color colorOfPlayer; //Негр?
-        public Player(Coordinate сoordinate, bool Life, Color color)
+        /// <summary>
+        /// Координата по оси x.
+        /// </summary>
+        private int x;
+        /// <summary>
+        /// Координата по оси y.
+        /// </summary>
+        private int y;
+        /// <summary>
+        /// Жив ли игрок?
+        /// </summary>
+        private bool life;
+        /// <summary>
+        /// Цвет игрока.
+        /// </summary>
+        private Color colorOfPlayer;
+        public Player(Point сoordinate, bool Life = true /*, Color color - требуется функция. (не является коментарием)*/)
         {
-            x = сoordinate.X;
-            y = сoordinate.Y;
+            x = Convert.ToInt16(сoordinate.X);
+            y = Convert.ToInt16(сoordinate.Y);
             life = Life;
-            colorOfPlayer = color;
-        }
-        public Player(Coordinate coordinate)
-        {
-            x = coordinate.X;
-            y = coordinate.Y;
+            //colorOfPlayer = color; - требуется функция. (не является коментарием)
         }
     }
 }
