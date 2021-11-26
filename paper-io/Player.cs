@@ -5,6 +5,15 @@ namespace paper_io
 {
     class Player
     {
+        public enum Direction
+        {
+            Up,
+            Down,
+            Left,
+            Right
+        }
+
+
         /// <summary>
         /// Координаты игрока
         /// </summary>
@@ -18,7 +27,7 @@ namespace paper_io
         /// <summary>
         /// Направление движения игрока
         /// </summary>
-        private PlayerDirection direction; 
+        private Direction direction; 
         /// <summary>
         /// Бот / игрок
         /// </summary>
@@ -33,7 +42,7 @@ namespace paper_io
             colorOfPlayer = color;
 
             // Изначально игрок идет вправо (просто потому что)
-            direction = PlayerDirection.Right;
+            direction = Direction.Right;
         }
 
         public Player(Coordinate coordinate)
@@ -42,7 +51,7 @@ namespace paper_io
             y = coordinate.Y;
 
             // Изначально игрок идет вправо (просто потому что)
-            direction = PlayerDirection.Right;
+            direction = Direction.Right;
         }
 
         /// <summary>
@@ -69,16 +78,16 @@ namespace paper_io
                     switch(num)
                     {
                         case 0: 
-                            direction = PlayerDirection.Left;
+                            direction = Direction.Left;
                             break;
                         case 1: 
-                            direction = PlayerDirection.Down;
+                            direction = Direction.Down;
                             break;
                         case 2: 
-                            direction = PlayerDirection.Up;
+                            direction = Direction.Up;
                             break;
                         case 3:
-                            direction = PlayerDirection.Right;
+                            direction = Direction.Right;
                             break;
                         default:
                             break;
