@@ -26,7 +26,8 @@ namespace paper_io
 
         private void StartButton(object sender, RoutedEventArgs e)
         {
-
+            GameStart gamestar = new GameStart();
+            gamestar.Show();
         }
 
         public void EnterField_TextChanged(object sender, TextChangedEventArgs e)
