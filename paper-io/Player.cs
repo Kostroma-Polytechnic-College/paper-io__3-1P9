@@ -19,7 +19,7 @@ namespace paper_io
         /// <summary>
         /// Жизнь игрока
         /// </summary>
-        private readonly bool life = true; 
+        private readonly bool life = true;
 
         public Player(int x, int y, Color color)
         {

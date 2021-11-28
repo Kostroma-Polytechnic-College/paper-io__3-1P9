@@ -28,6 +28,7 @@ namespace paper_io
         {
             GameStart gamestar = new GameStart();
             gamestar.Show();
+            this.Close();
         }
 
         public void EnterField_TextChanged(object sender, TextChangedEventArgs e)
