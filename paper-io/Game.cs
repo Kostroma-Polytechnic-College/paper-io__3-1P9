@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows;
 
 namespace paper_io
-{
+{ 
     public class Game
     {
         /// <summary>
@@ -12,40 +12,35 @@ namespace paper_io
         /// </summary>
         private Player[,] gamematrix;
         /// <summary>
-        /// Размер матрици.
-        /// </summary>
-        int heightmatrix;
-        /// <summary>
         /// Перечисление игрокоов.
         /// </summary>
         List<Player> players = new List<Player>();
         public Game(int players)
         {
-            heightmatrix = players * 10;
-            gamematrix = new Player[heightmatrix, heightmatrix];
+            gamematrix = new Player[players * 10, players * 10];
         }
         /// <summary>
         /// Создает матрицу 3 на 3 с игроком в центре.
         /// </summary>
         public void StartGame()
         {
-            List<Point> coordinates = new List<Point>();
-            for (int originalline = 0; originalline < heightmatrix - 2; originalline++)
+            List<Point> locations = new List<Point>();
+            for (int originalline = 0; originalline < gamematrix.GetLength(0) - 2; originalline++)
             {
-                for (int column = 0; column < heightmatrix - 2; column++)
+                for (int column = 0; column < gamematrix.GetLength(0) - 2; column++)
                 {
                     if (ChekPoint(originalline, column))
                     {
-                        coordinates.Add(new Point(originalline, column));
+                        locations.Add(new Point(originalline, column));
                     }
                 }
             }
-            if (coordinates.Count() != 0)
+            if (locations.Count() != 0)
             {
                 Random random = new Random();
-                Point coordinate = coordinates[random.Next(0, coordinates.Count() - 1)];
+                Point location = locations[random.Next(locations.Count())];
 
-                CreatePlayer(coordinate);
+                CreatePlayer(location);
             }
         }
         /// <summary>
@@ -62,7 +57,7 @@ namespace paper_io
                 {
                     for (int c = column; c < column + 3; c++)
                     {
-                        if (gamematrix[l, c] != null) return (false);
+                        if (gamematrix[l, c] != null) return false;
                     }
                 }
                 return true;
@@ -75,14 +70,14 @@ namespace paper_io
         /// <summary>
         /// Создает игрока в подматрице 3 на 3 в центре и с тереторией в подматрицу, начиная с верхнего левого угла.
         /// </summary>
-        /// <param name="coordinate"></param>
-        private void CreatePlayer(Point coordinate)
+        /// <param name="location"></param>
+        private void CreatePlayer(Point location)
         {
-            Player player = new Player(new Point(coordinate.X + 1, coordinate.Y + 1));
+            Player player = new Player(new Point(location.X + 1, location.Y + 1));
             players.Add(player);
-            for (int i = Convert.ToInt32(coordinate.X); i < Convert.ToInt32(coordinate.X) + 3; i++)
+            for (int i = (int)location.X; i < location.X + 3; i++)
             {
-                for (int j = Convert.ToInt32(coordinate.Y); j < Convert.ToInt32(coordinate.Y) + 3; j++)
+                for (int j = Convert.ToInt32(location.Y); j < Convert.ToInt32(location.Y) + 3; j++)
                 {
                     gamematrix[i, j] = player;
                 }

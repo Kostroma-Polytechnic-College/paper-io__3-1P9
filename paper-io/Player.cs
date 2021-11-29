@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Media;
 
 namespace paper_io
@@ -7,13 +6,9 @@ namespace paper_io
     class Player
     {
         /// <summary>
-        /// Координата по оси x.
+        /// Координаты игрока. (с типом double)
         /// </summary>
-        private int x;
-        /// <summary>
-        /// Координата по оси y.
-        /// </summary>
-        private int y;
+        private Point point;
         /// <summary>
         /// Жив ли игрок?
         /// </summary>
@@ -21,13 +16,25 @@ namespace paper_io
         /// <summary>
         /// Цвет игрока.
         /// </summary>
-        private Color colorOfPlayer;
-        public Player(Point сoordinate, bool Life = true /*, Color color - требуется функция. (не является коментарием)*/)
+        private Color color;
+        public Player(Point coordinate)
         {
-            x = Convert.ToInt16(сoordinate.X);
-            y = Convert.ToInt16(сoordinate.Y);
-            life = Life;
-            //colorOfPlayer = color; - требуется функция. (не является коментарием)
+            point = coordinate;
+            life = true;
+        }
+        public int X
+        {
+            get
+            {
+                return (int)point.X;
+            }
+        }
+        public int Y
+        {
+            get
+            {
+                return (int)point.Y;
+            }
         }
     }
 }
