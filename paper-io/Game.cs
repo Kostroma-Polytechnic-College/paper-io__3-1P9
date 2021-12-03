@@ -1,56 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-<<<<<<< HEAD
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace paper_io
 {
-    class Game
-    {
-        /// <summary>
-        /// Матрица игроков
-        /// </summary>
-        public Player[,] MatrixOfPlayers { get; set; }
-
-        /// <summary>
-        /// Количество игроков
-        /// </summary>
-        public static int AmoutOfPlayers { get; set; }
-        public Game(int players)
-        {
-            AmoutOfPlayers = players;
-            MatrixOfPlayers = new Player[players * 10, players * 10];
-
-            for (int x = 0; x < MatrixOfPlayers.GetLength(0); x++)
-            {
-                for (int y = 0; y < MatrixOfPlayers.GetLength(1); y++)
-                {
-                    MatrixOfPlayers[y, x] = new Player(y, x);
-=======
-using System.Windows;
-
-namespace paper_io
-{ 
     public class Game
     {
         /// <summary>
         /// Матрица игрового поля.
         /// </summary>
         private Player[,] gamematrix;
+
+        public static int AmountOfPlayers { get; set; }
         /// <summary>
-        /// Перечисление игрокоов.
+        /// Размерность матрицы
+        /// </summary>
+        public int GetSize
+        {
+            get
+            {
+                return gamematrix.GetLength(0);
+            }
+        }
+
+        /// <summary>
+        /// Перечисление игроков.
         /// </summary>
         List<Player> players = new List<Player>();
+
         public Game(int players)
         {
             gamematrix = new Player[players * 10, players * 10];
@@ -116,7 +94,6 @@ namespace paper_io
                 for (int j = Convert.ToInt32(location.Y); j < Convert.ToInt32(location.Y) + 3; j++)
                 {
                     gamematrix[i, j] = player;
->>>>>>> a174c71fdc667ef792d2f698405bcc72acd19c23
                 }
             }
         }

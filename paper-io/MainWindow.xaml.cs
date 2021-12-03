@@ -1,20 +1,5 @@
-<<<<<<< HEAD
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-=======
-﻿using System.Windows;
->>>>>>> a174c71fdc667ef792d2f698405bcc72acd19c23
 
 namespace paper_io
 {
@@ -30,11 +15,12 @@ namespace paper_io
 
         private void StartButton(object sender, RoutedEventArgs e)
         {
-            Game game = new Game(Game.AmoutOfPlayers);
-
+            GameLauncher launcher = new GameLauncher();
+            launcher.Show();
+            MainWindowOfTheGame.Close();
         }
 
-        public void EnterField_TextChanged(object sender, TextChangedEventArgs e)
+        private void EnterField_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             string result = "";
             foreach (char item in EnterField.Text)
@@ -44,7 +30,8 @@ namespace paper_io
             }
             EnterField.Text = result;
 
-            Game.AmoutOfPlayers = Convert.ToInt32(result);
+            Game game = new Game(Convert.ToInt32(result));
+            Game.AmountOfPlayers = Convert.ToInt32(result);
         }
     }
 }
