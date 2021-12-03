@@ -26,6 +26,7 @@ namespace paper_io
 
         private void StartButton(object sender, RoutedEventArgs e)
         {
+            Game game = new Game(Game.AmoutOfPlayers);
 
         }
 
@@ -38,6 +39,8 @@ namespace paper_io
                     result += item;
             }
             EnterField.Text = result;
+
+            Game.AmoutOfPlayers = Convert.ToInt32(result);
         }
     }
 }

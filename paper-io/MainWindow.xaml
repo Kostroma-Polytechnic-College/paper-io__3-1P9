@@ -23,5 +23,9 @@
         <Slider Minimum="0" Maximum="24" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" Name="slValue" Margin="143.8,234,124.648,86" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" />
         <Label Content="Укажите количесво игроков" HorizontalAlignment="Left" Margin="125.8,101,0,0" VerticalAlignment="Top" Height="55" Width="278" FlowDirection="RightToLeft" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="1"/>
 
+
+        <Canvas Name="GameArea" ClipToBounds="True" Width="400" Height="400">
+            
+        </Canvas>
     </Grid>
 </Window>
