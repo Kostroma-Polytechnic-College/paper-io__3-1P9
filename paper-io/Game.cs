@@ -17,14 +17,18 @@ namespace paper_io
     class Game
     {
         /// <summary>
-        /// Количество игроков
+        /// Матрица игроков
         /// </summary>
         public Player[,] MatrixOfPlayers { get; set; }
 
+        /// <summary>
+        /// Количество игроков
+        /// </summary>
         public static int AmoutOfPlayers { get; set; }
         public Game(int players)
         {
-            MatrixOfPlayers = new Player[AmoutOfPlayers * 10, AmoutOfPlayers * 10];
+            AmoutOfPlayers = players;
+            MatrixOfPlayers = new Player[players * 10, players * 10];
 
             for (int x = 0; x < MatrixOfPlayers.GetLength(0); x++)
             {
