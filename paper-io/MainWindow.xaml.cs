@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,9 @@ using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+=======
+﻿using System.Windows;
+>>>>>>> a174c71fdc667ef792d2f698405bcc72acd19c23
 
 namespace paper_io
 {
