@@ -15,9 +15,7 @@ namespace paper_io
 
         private void StartButton(object sender, RoutedEventArgs e)
         {
-            GameLauncher launcher = new GameLauncher();
-            launcher.Show();
-            MainWindowOfTheGame.Close();
+
         }
 
         private void EnterField_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
@@ -30,8 +28,7 @@ namespace paper_io
             }
             EnterField.Text = result;
 
-            Game game = new Game(Convert.ToInt32(result));
-            Game.AmountOfPlayers = Convert.ToInt32(result);
+            Game.AmountOfPlayers = Convert.ToByte(result);
         }
     }
 }

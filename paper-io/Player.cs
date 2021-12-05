@@ -3,14 +3,17 @@ using System.Windows.Media;
 
 namespace paper_io
 {
+    /// <summary>
+    /// Класс игрока
+    /// </summary>
     class Player
     {
         /// <summary>
         /// Жизнь игрока
         /// </summary>
-        private readonly bool life = true;
+        private bool life;
         /// <summary>
-        /// Координаты игрока. (с типом double)
+        /// Координаты игрока.
         /// </summary>
         private Point point;
         /// <summary>
