@@ -1,7 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace paper_io
 { 
@@ -18,11 +28,12 @@ namespace paper_io
         public Game(int players)
         {
             gamematrix = new Player[players * 10, players * 10];
+            for (int i = 0; i < players; i++) CreatePlayer();
         }
         /// <summary>
         /// Создает матрицу 3 на 3 с игроком в центре.
         /// </summary>
-        public void StartGame()
+        public void CreatePlayer()
         {
             List<Point> locations = new List<Point>();
             for (int originalline = 0; originalline < gamematrix.GetLength(0) - 2; originalline++)
@@ -51,21 +62,14 @@ namespace paper_io
         /// <returns>bool</returns>
         private bool ChekPoint(int line, int column)
         {
-            try
+            for (int l = line; l < line + 3; l++)
             {
-                for (int l = line; l < line + 3; l++)
+                for (int c = column; c < column + 3; c++)
                 {
-                    for (int c = column; c < column + 3; c++)
-                    {
-                        if (gamematrix[l, c] != null) return false;
-                    }
+                    if (gamematrix[l, c] != null) return false;
                 }
-                return true;
             }
-            catch
-            {
-                return false;
-            }
+            return true;
         }
         /// <summary>
         /// Создает игрока в подматрице 3 на 3 в центре и с тереторией в подматрицу, начиная с верхнего левого угла.
@@ -77,7 +81,7 @@ namespace paper_io
             players.Add(player);
             for (int i = (int)location.X; i < location.X + 3; i++)
             {
-                for (int j = Convert.ToInt32(location.Y); j < Convert.ToInt32(location.Y) + 3; j++)
+                for (int j = (int)location.Y; j < (int)location.Y + 3; j++)
                 {
                     gamematrix[i, j] = player;
                 }

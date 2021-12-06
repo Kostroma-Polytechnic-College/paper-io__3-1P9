@@ -8,7 +8,7 @@ namespace paper_io
         /// <summary>
         /// Координаты игрока. (с типом double)
         /// </summary>
-        private Point point;
+        private Point location;
         /// <summary>
         /// Жив ли игрок?
         /// </summary>
@@ -19,21 +19,21 @@ namespace paper_io
         private Color color;
         public Player(Point coordinate)
         {
-            point = coordinate;
+            location = coordinate;
             life = true;
         }
         public int X
         {
             get
             {
-                return (int)point.X;
+                return (int)location.X;
             }
         }
         public int Y
         {
             get
             {
-                return (int)point.Y;
+                return (int)location.Y;
             }
         }
     }
