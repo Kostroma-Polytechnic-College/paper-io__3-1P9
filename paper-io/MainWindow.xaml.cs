@@ -23,12 +23,11 @@ namespace paper_io
         {
             InitializeComponent();
         }
-
         private void StartButton(object sender, RoutedEventArgs e)
         {
-            GameStart gamestar = new GameStart();
-            gamestar.Show();
-            this.Close();
+            string quantity = EnterField.Text;
+            new GameStart(quantity).ShowDialog();
+            Close();
         }
 
         public void EnterField_TextChanged(object sender, TextChangedEventArgs e)

@@ -20,10 +20,11 @@ namespace paper_io
     public partial class GameStart : Window
     {
         public string ViewModel { get; set; }
-        public GameStart()
+        public GameStart(string quantity)
         {
             InitializeComponent();
-        }
+            Label_quantity.Content += quantity;
+        } 
         public void ShowViewModel()
         {
             MessageBox.Show(ViewModel);
