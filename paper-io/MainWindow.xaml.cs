@@ -39,6 +39,8 @@ namespace paper_io
                     result += item;
             }
             EnterField.Text = result;
+
+            GameStart.AmountOfPlayers1 = Convert.ToByte(result);
         }
     }
 }

@@ -29,5 +29,7 @@ namespace paper_io
         {
             MessageBox.Show(ViewModel);
         }
+        public static byte AmountOfPlayers1 { get; set; }
+    
     }
 }
