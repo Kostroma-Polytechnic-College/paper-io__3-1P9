@@ -12,10 +12,8 @@ namespace paper_io
         {
             InitializeComponent();
         }
-
         private void StartButton(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void EnterField_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)

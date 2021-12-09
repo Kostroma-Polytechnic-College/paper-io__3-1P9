@@ -20,25 +20,8 @@ namespace paper_io
         /// Цвет игрока.
         /// </summary>
         private Color ColorOfPlayer { get; set; }
-
-        public Player(Point coordinate)
+        public Player()
         {
-            point = coordinate;
-            life = true;
-        }
-        public int X
-        {
-            get
-            {
-                return (int)point.X;
-            }
-        }
-        public int Y
-        {
-            get
-            {
-                return (int)point.Y;
-            }
         }
     }
 }
