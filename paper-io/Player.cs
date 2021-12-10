@@ -13,7 +13,7 @@ namespace paper_io
         /// <summary>
         /// Координаты игрока. (с типом double)
         /// </summary>
-        public Point location;
+        public Point Location;
         /// <summary>
         /// Жив ли игрок?
         /// </summary>
@@ -28,7 +28,7 @@ namespace paper_io
         /// <param name="point">Точка, по координатам которой появится игрок.</param>
         public Player(Point point)
         {
-            location = point;
+            Location = point;
             life = true;
         }
     }
