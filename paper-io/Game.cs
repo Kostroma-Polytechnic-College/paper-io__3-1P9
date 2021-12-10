@@ -4,14 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace paper_io
 { 
@@ -28,12 +20,12 @@ namespace paper_io
         public Game(int players)
         {
             gamematrix = new Player[players * 10, players * 10];
-            for (int i = 0; i < players; i++) CheckingMatrixForVoidness();
+            for (int i = 0; i < players; i++) FindePoint();
         }
         /// <summary>
-        /// Проеряет, входит ли матрица 3 на 3 в матрицу. И автоматически вызывает метод CreatePlayer.
+        /// Ищет сектор 3 на 3 и если он есть, то вызывает метод CreatePlayer.
         /// </summary>
-        public void CheckingMatrixForVoidness()
+        public void FindePoint()
         {
             List<Point> locations = new List<Point>();
             for (int originalline = 0; originalline < gamematrix.GetLength(0) - 2; originalline++)
@@ -55,7 +47,7 @@ namespace paper_io
             }
         }
         /// <summary>
-        /// Проверяе, входит ли подматрица 3 на 3, начиная с верхнего левого угла.
+        /// Проверяет, входит ли подматрица 3 на 3 в главную матрицу игры, начиная с верхнего левого угла.
         /// </summary>
         /// <param name="line">Координата X</param>
         /// <param name="column">Координата Y</param>
