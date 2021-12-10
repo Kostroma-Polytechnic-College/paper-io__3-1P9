@@ -20,10 +20,10 @@ namespace paper_io
         /// Матрица игрового поля. Хранит территорию игроков
         /// </summary>
         public Player[,] gameMatrix;
-        public Game(byte n)
+        public Game(int players)
         {
-            gameMatrix = new Player[n * 10, n * 10];
-            for (int i = 0; i < n; i++) FindePoint();
+            gameMatrix = new Player[players * 10, players * 10];
+            for (int i = 0; i < players; i++) FindePoint();
         }
         /// <summary>
         /// Ищет сектор 3 на 3 и если он есть, то вызывает метод CreatePlayer.
@@ -69,6 +69,7 @@ namespace paper_io
         /// <summary>
         /// Принимает количество игроков и делает поле размерностью n*n, где n- количество игроков * 10
         /// </summary>
+        /// <param name="n">Количество игроков</param>
         private void CreatePlayer(Point point)
         {
             Player player = new Player(new Point(point.X + 1, point.Y + 1));
