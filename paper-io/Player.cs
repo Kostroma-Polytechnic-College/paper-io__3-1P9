@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Media;
 
 namespace paper_io
@@ -12,7 +13,6 @@ namespace paper_io
             Left,
             Right
         }
-
 
         /// <summary>
         /// Координаты игрока
@@ -33,11 +33,10 @@ namespace paper_io
         /// </summary>
         private bool isBot;
 
-
-        public Player(Coordinate сoordinate, bool Life, Color color)
+        public Player(Point сoordinate, bool Life, Color color)
         {
-            x = сoordinate.X;
-            y = сoordinate.Y;
+            x = (int) сoordinate.X;
+            y = (int) сoordinate.Y;
             life = Life;
             colorOfPlayer = color;
 
@@ -45,10 +44,10 @@ namespace paper_io
             direction = Direction.Right;
         }
 
-        public Player(Coordinate coordinate)
+        public Player(Point coordinate)
         {
-            x = coordinate.X;
-            y = coordinate.Y;
+            x = (int) coordinate.X;
+            y = (int) coordinate.Y;
 
             // Изначально игрок идет вправо (просто потому что)
             direction = Direction.Right;
