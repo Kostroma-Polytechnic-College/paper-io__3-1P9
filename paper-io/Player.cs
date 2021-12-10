@@ -8,20 +8,6 @@ namespace paper_io
     /// </summary>
     class Player
     {
-        /// <summary>
-        /// Жизнь игрока
-        /// </summary>
-        private bool life;
-        /// <summary>
-        /// Координаты игрока.
-        /// </summary>
-        private Point point;
-        /// <summary>
-        /// Цвет игрока.
-        /// </summary>
-        private Color ColorOfPlayer { get; set; }
-        public Player()
-        {
-        }
+
     }
 }

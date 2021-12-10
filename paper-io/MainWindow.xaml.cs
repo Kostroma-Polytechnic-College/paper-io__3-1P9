@@ -12,10 +12,6 @@ namespace paper_io
         {
             InitializeComponent();
         }
-        private void StartButton(object sender, RoutedEventArgs e)
-        {
-        }
-
         private void EnterField_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             string result = "";
@@ -23,10 +19,8 @@ namespace paper_io
             {
                 if (char.IsNumber(item))
                     result += item;
-            }
+            }   
             EnterField.Text = result;
-
-            Game.AmountOfPlayers = Convert.ToByte(result);
         }
     }
 }

@@ -20,7 +20,7 @@
             <RowDefinition Height="0*"/>
             <RowDefinition Height="387*"/>
         </Grid.RowDefinitions>
-        <Button Content="Запустить игру" HorizontalAlignment="Left" Margin="13,171,0,0" VerticalAlignment="Top" Width="148" Height="54" Grid.Row="2" Grid.Column="4" Click="StartButton"/>
+        <Button Content="Запустить игру" HorizontalAlignment="Left" Margin="13,171,0,0" VerticalAlignment="Top" Width="148" Height="54" Grid.Row="2" Grid.Column="4"/>
         <TextBox x:Name="EnterField" Text="{Binding ElementName=slValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" Margin="1.983,189,43,168" Grid.Column="2" RenderTransformOrigin="-5.618,4.462" Grid.Row="2" FontSize="20" TextChanged="EnterField_TextChanged"  />
         <Slider Minimum="0" Maximum="24" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" Name="slValue" Margin="144,234,125,86" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" />
         <Label Content="Укажите количесво игроков" HorizontalAlignment="Left" Margin="126,101,0,0" VerticalAlignment="Top" Height="55" Width="278" FlowDirection="RightToLeft" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" Grid.Row="2" Grid.ColumnSpan="3" Grid.Column="1"/>

@@ -19,10 +19,6 @@ namespace paper_io
         /// </summary>
         public Player[,] gameMatrix;
         /// <summary>
-        /// Свойство для указания количества игроков 
-        /// </summary>
-        public static byte AmountOfPlayers { get; set; }
-        /// <summary>
         /// Принимает количество игроков и делает поле размерностью n*n, где n- количество игроков * 10
         /// </summary>
         /// <param name="n">Количество игроков</param>
