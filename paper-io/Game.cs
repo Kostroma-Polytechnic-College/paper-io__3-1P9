@@ -13,16 +13,16 @@ namespace paper_io
     class Game
     {
         /// <summary>
-        /// Список всех игроков
+        /// Матрица игрового поля.
         /// </summary>
-        List<Player> Players = new List<Player>();
+        public Player[,] gamematrix;
         /// <summary>
-        /// Матрица игрового поля. Хранит территорию игроков
+        /// Перечисление игрокоов.
         /// </summary>
-        public Player[,] gameMatrix;
+        List<Player> players = new List<Player>();
         public Game(int players)
         {
-            gameMatrix = new Player[players * 10, players * 10];
+            gamematrix = new Player[players * 10, players * 10];
             for (int i = 0; i < players; i++) FindePoint();
         }
         /// <summary>
@@ -31,9 +31,9 @@ namespace paper_io
         public void FindePoint()
         {
             List<Point> locations = new List<Point>();
-            for (int originalline = 0; originalline < gameMatrix.GetLength(0) - 2; originalline++)
+            for (int originalline = 0; originalline < gamematrix.GetLength(0) - 2; originalline++)
             {
-                for (int column = 0; column < gameMatrix.GetLength(0) - 2; column++)
+                for (int column = 0; column < gamematrix.GetLength(0) - 2; column++)
                 {
                     if (ChekPoint(originalline, column))
                     {
@@ -61,7 +61,7 @@ namespace paper_io
             {
                 for (int c = column; c < column + 3; c++)
                 {
-                    if (gameMatrix[l, c] != null) return false;
+                    if (gamematrix[l, c] != null) return false;
                 }
             }
             return true;
@@ -73,12 +73,12 @@ namespace paper_io
         private void CreatePlayer(Point point)
         {
             Player player = new Player(new Point(point.X + 1, point.Y + 1));
-            Players.Add(player);
+            players.Add(player);
             for (int i = (int)point.X; i < point.X + 3; i++)
             {
                 for (int j = (int)point.Y; j < (int)point.Y + 3; j++)
                 {
-                    gameMatrix[i, j] = player;
+                    gamematrix[i, j] = player;
                 }
             }
         }
