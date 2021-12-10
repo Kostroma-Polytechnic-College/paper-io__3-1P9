@@ -17,8 +17,7 @@ namespace paper_io
         /// <summary>
         /// Координаты игрока
         /// </summary>
-        private int x;
-        private int y; 
+        public Point Location;
         /// <summary>
         /// Жив ли / мертв ли игрок 
         /// </summary>
@@ -35,8 +34,7 @@ namespace paper_io
 
         public Player(Point сoordinate, bool Life, Color color)
         {
-            x = (int) сoordinate.X;
-            y = (int) сoordinate.Y;
+            this.Location = сoordinate;
             life = Life;
             colorOfPlayer = color;
 
@@ -46,8 +44,7 @@ namespace paper_io
 
         public Player(Point coordinate)
         {
-            x = (int) coordinate.X;
-            y = (int) coordinate.Y;
+            this.Location = coordinate;
 
             // Изначально игрок идет вправо (просто потому что)
             direction = Direction.Right;
@@ -59,12 +56,15 @@ namespace paper_io
         /// <param name="gamematrix"></param>
         public void Bot(Player[,] players)
         {
+            int x = (int) this.Location.X;
+            int y = (int) this.Location.Y;
+
             /* Если со всех сторон находится территория текущего игрока, то направление 
                движения не менять*/
-            if (players[this.x, this.y + 1].GetHashCode() == this.GetHashCode()
-                && players[this.x - 1, this.y].GetHashCode() == this.GetHashCode()
-                && players[this.x + 1, this.y].GetHashCode() == this.GetHashCode()
-                && players[this.x, this.y - 1].GetHashCode() == this.GetHashCode()
+            if (players[this.x, this.y + 1] == this
+                && players[this.x - 1, this.y] == this
+                && players[this.x + 1, this.y] == this
+                && players[this.x, this.y - 1] == this
                 )
             {
                 return;
@@ -86,9 +86,9 @@ namespace paper_io
 
             /* Если впереди и слева и справа нет территории текущего игрока, то повернуть
                направо если там нет стены или повернуть налево если справа есть стена. Если впереди нет территории  */
-            if (players[this.x, this.y + 1].GetHashCode() == this.GetHashCode() 
-                && players[this.x - 1, this.y].GetHashCode() == this.GetHashCode()
-                && players[this.x + 1, this.y].GetHashCode() == this.GetHashCode()
+            if (players[this.x, this.y + 1] == this
+                && players[this.x - 1, this.y] == this
+                && players[this.x + 1, this.y] == this
                 )
             {
                 if (this.x != 0 || this.y < players.Length - 1)
