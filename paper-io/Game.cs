@@ -28,12 +28,12 @@ namespace paper_io
         public Game(int players)
         {
             gamematrix = new Player[players * 10, players * 10];
-            for (int i = 0; i < players; i++) CreatePlayer();
+            for (int i = 0; i < players; i++) CheckingMatrixForVoidness();
         }
         /// <summary>
-        /// Создает матрицу 3 на 3 с игроком в центре.
+        /// Проеряет, входит ли матрица 3 на 3 в матрицу. И автоматически вызывает метод CreatePlayer.
         /// </summary>
-        public void CreatePlayer()
+        public void CheckingMatrixForVoidness()
         {
             List<Point> locations = new List<Point>();
             for (int originalline = 0; originalline < gamematrix.GetLength(0) - 2; originalline++)
@@ -57,8 +57,8 @@ namespace paper_io
         /// <summary>
         /// Проверяе, входит ли подматрица 3 на 3, начиная с верхнего левого угла.
         /// </summary>
-        /// <param name="line"></param>
-        /// <param name="column"></param>
+        /// <param name="line">Координата X</param>
+        /// <param name="column">Координата Y</param>
         /// <returns>bool</returns>
         private bool ChekPoint(int line, int column)
         {
@@ -74,14 +74,14 @@ namespace paper_io
         /// <summary>
         /// Создает игрока в подматрице 3 на 3 в центре и с тереторией в подматрицу, начиная с верхнего левого угла.
         /// </summary>
-        /// <param name="location"></param>
-        private void CreatePlayer(Point location)
+        /// <param name="point">Правая верхняя точка матрицы 3 на 3.</param>
+        private void CreatePlayer(Point point)
         {
-            Player player = new Player(new Point(location.X + 1, location.Y + 1));
+            Player player = new Player(new Point(point.X + 1, point.Y + 1));
             players.Add(player);
-            for (int i = (int)location.X; i < location.X + 3; i++)
+            for (int i = (int)point.X; i < point.X + 3; i++)
             {
-                for (int j = (int)location.Y; j < (int)location.Y + 3; j++)
+                for (int j = (int)point.Y; j < (int)point.Y + 3; j++)
                 {
                     gamematrix[i, j] = player;
                 }

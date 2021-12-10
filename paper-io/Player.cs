@@ -1,5 +1,17 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace paper_io
 {
@@ -8,7 +20,7 @@ namespace paper_io
         /// <summary>
         /// Координаты игрока. (с типом double)
         /// </summary>
-        private Point location;
+        public Point location;
         /// <summary>
         /// Жив ли игрок?
         /// </summary>
@@ -17,24 +29,14 @@ namespace paper_io
         /// Цвет игрока.
         /// </summary>
         private Color color;
-        public Player(Point coordinate)
+        /// <summary>
+        /// Конструктор игрока.
+        /// </summary>
+        /// <param name="point">Точка, по координатам которой появится игрок.</param>
+        public Player(Point point)
         {
-            location = coordinate;
+            location = point;
             life = true;
-        }
-        public int X
-        {
-            get
-            {
-                return (int)location.X;
-            }
-        }
-        public int Y
-        {
-            get
-            {
-                return (int)location.Y;
-            }
         }
     }
 }
