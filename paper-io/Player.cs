@@ -71,14 +71,12 @@ namespace paper_io
                 return;
             }
 
-
             /* Если впереди текущего игрока находится стена и слева нет стены, то повернуть налево. */
             if (this.x == 0 && this.y > 0)
             {
                 this.direction = Direction.Left;
                 return;
             }
-
 
             /*  Если впереди игрока находится стена и справа нет стены, то повернуть направо. */
             if (this.x == 0 && this.y < players.Length - 1)
