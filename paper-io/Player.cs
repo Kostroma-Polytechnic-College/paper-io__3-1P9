@@ -8,6 +8,5 @@ namespace paper_io
     /// </summary>
     class Player
     {
-
     }
 }
