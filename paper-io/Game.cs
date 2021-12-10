@@ -9,7 +9,7 @@ namespace paper_io
         /// <summary>
         /// Кол-во игроков
         /// </summary>
-        private Player[,] gamematrix; 
+        private Player[,] gamematrix;
         int heightmatrix;
         public Game(int players)
         {

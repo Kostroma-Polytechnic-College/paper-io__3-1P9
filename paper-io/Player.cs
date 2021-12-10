@@ -58,40 +58,48 @@ namespace paper_io
         /// Метод, отвечающий за изменение направления движения игрока/бота
         /// </summary>
         /// <param name="gamematrix"></param>
-        public void ChangeDirection(Player[,] gamematrix)
+        public void Bot(Player[,] players)
         {
-            // Проход по всем клеткам игрового поля
-            foreach (var row in gamematrix)
+            /* Если со всех сторон находится территория текущего игрока, то направление 
+               движения не менять*/
+            if (players[this.x, this.y + 1].GetHashCode() == this.GetHashCode()
+                && players[this.x - 1, this.y].GetHashCode() == this.GetHashCode()
+                && players[this.x + 1, this.y].GetHashCode() == this.GetHashCode()
+                && players[this.x, this.y - 1].GetHashCode() == this.GetHashCode()
+                )
             {
-                // По всей видимости, я не понимаю, что содержит внутри себя gamematrix типа Player[,]
-                // Ошибка: Player не содержит открытое определение экземпляра или расширения для типа "GetEnumerator"
-                // foreach (var column in row)
-                
-                // Заглушка для ошибки, описанной выше
-                foreach (var column in new int[] { 1, 2, 3 })
-                {
-                    // Заглушка для логики выбора направления (на данный момент мне неясно, как именно устроен объект gamematrix типа Player[,])
-                    // Сейчас движение меняется просто за счет случайного числа
-                    var random = new Random();
-                    var num = random.Next(0, 3);
+                return;
+            }
 
-                    switch(num)
-                    {
-                        case 0: 
-                            direction = Direction.Left;
-                            break;
-                        case 1: 
-                            direction = Direction.Down;
-                            break;
-                        case 2: 
-                            direction = Direction.Up;
-                            break;
-                        case 3:
-                            direction = Direction.Right;
-                            break;
-                        default:
-                            break;
-                    }
+
+            /* Если впереди текущего игрока находится стена и слева нет стены, то повернуть налево. */
+            if (this.x == 0 && this.y > 0)
+            {
+                this.direction = Direction.Left;
+                return;
+            }
+
+
+            /*  Если впереди игрока находится стена и справа нет стены, то повернуть направо. */
+            if (this.x == 0 && this.y < players.Length - 1)
+            {
+                this.direction = Direction.Right;
+                return;
+            }
+
+            /* Если впереди и слева и справа нет территории текущего игрока, то повернуть
+               направо если там нет стены или повернуть налево если справа есть стена. Если впереди нет территории  */
+            if (players[this.x, this.y + 1].GetHashCode() == this.GetHashCode() 
+                && players[this.x - 1, this.y].GetHashCode() == this.GetHashCode()
+                && players[this.x + 1, this.y].GetHashCode() == this.GetHashCode()
+                )
+            {
+                if (this.x != 0 || this.y < players.Length - 1)
+                {
+                    this.direction = Direction.Right;
+                } else
+                {
+                    this.direction = Direction.Left;
                 }
             }
         }
