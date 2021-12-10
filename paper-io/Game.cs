@@ -19,12 +19,11 @@ namespace paper_io
         /// <summary>
         /// Матрица игрового поля. Хранит территорию игроков
         /// </summary>
-        public Player[,] gamematrix;
-        List<Player> players = new List<Player>();
-        public Game(int players)
+        public Player[,] gameMatrix;
+        public Game(byte n)
         {
-            gamematrix = new Player[players * 10, players * 10];
-            for (int i = 0; i < players; i++) FindePoint();
+            gameMatrix = new Player[n * 10, n * 10];
+            for (int i = 0; i < n; i++) FindePoint();
         }
         /// <summary>
         /// Ищет сектор 3 на 3 и если он есть, то вызывает метод CreatePlayer.
@@ -32,9 +31,9 @@ namespace paper_io
         public void FindePoint()
         {
             List<Point> locations = new List<Point>();
-            for (int originalline = 0; originalline < gamematrix.GetLength(0) - 2; originalline++)
+            for (int originalline = 0; originalline < gameMatrix.GetLength(0) - 2; originalline++)
             {
-                for (int column = 0; column < gamematrix.GetLength(0) - 2; column++)
+                for (int column = 0; column < gameMatrix.GetLength(0) - 2; column++)
                 {
                     if (ChekPoint(originalline, column))
                     {
@@ -62,7 +61,7 @@ namespace paper_io
             {
                 for (int c = column; c < column + 3; c++)
                 {
-                    if (gamematrix[l, c] != null) return false;
+                    if (gameMatrix[l, c] != null) return false;
                 }
             }
             return true;
@@ -70,16 +69,15 @@ namespace paper_io
         /// <summary>
         /// Принимает количество игроков и делает поле размерностью n*n, где n- количество игроков * 10
         /// </summary>
-        /// <param name="n">Количество игроков</param>
         private void CreatePlayer(Point point)
         {
             Player player = new Player(new Point(point.X + 1, point.Y + 1));
-            players.Add(player);
+            Players.Add(player);
             for (int i = (int)point.X; i < point.X + 3; i++)
             {
                 for (int j = (int)point.Y; j < (int)point.Y + 3; j++)
                 {
-                    gamematrix[i, j] = player;
+                    gameMatrix[i, j] = player;
                 }
             }
         }
