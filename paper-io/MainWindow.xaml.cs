@@ -27,11 +27,12 @@ namespace paper_io
         private void StartButton(object sender, RoutedEventArgs e)
         {
             string quantity = EnterField.Text;
-            new GameStart(quantity).ShowDialog();
+            int amount = int.Parse(quantity);
+            new GameStart(amount).ShowDialog();
             Close();
         }
 
-        public void EnterField_TextChanged(object sender, TextChangedEventArgs e)
+        private void EnterField_TextChanged(object sender, TextChangedEventArgs e)
         {
             string result = "";
             foreach (char item in EnterField.Text)
