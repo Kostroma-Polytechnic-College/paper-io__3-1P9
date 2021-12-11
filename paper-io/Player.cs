@@ -10,6 +10,15 @@ namespace paper_io
 {
     class Player
     {
+        public enum Direction
+        {
+            Up,
+            Down,
+            Left,
+            Right
+        }
+
+        public Direction PlayerDirection;
         /// <summary>
         /// Координаты игрока. (с типом double)
         /// </summary>
