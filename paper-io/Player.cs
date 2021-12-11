@@ -47,8 +47,8 @@ namespace paper_io
         /// <param name="gamematrix"></param>
         public void Bot(Player[,] players)
         {
-            int x = (int) this.Location.X;
-            int y = (int) this.Location.Y;
+            int x = (int) Location.X;
+            int y = (int) Location.Y;
 
             /* Если со всех сторон находится территория текущего игрока, то направление 
                движения не менять*/
@@ -62,17 +62,22 @@ namespace paper_io
             }
 
             /* Если впереди текущего игрока находится стена и слева нет стены, то повернуть налево. */
-            if (x == 0 && y > 0)
-            {
-                this.direction = Direction.Left;
-                return;
+            if (y > 0) { 
+                if (x == 0 || x == players.Length - 1)
+                {
+                    PlayerDirection = Direction.Left;
+                    return;
+                }
             }
 
             /*  Если впереди игрока находится стена и справа нет стены, то повернуть направо. */
-            if (this.x == 0 && this.y < players.Length - 1)
+            if (y < players.Length - 1)
             {
-                this.direction = Direction.Right;
-                return;
+                if (x == 0 || x == players.Length - 1)
+                {
+                    PlayerDirection = Direction.Right;
+                    return;
+                }
             }
 
             /* Если впереди и слева и справа нет территории текущего игрока, то повернуть
@@ -82,14 +87,13 @@ namespace paper_io
                 && players[x + 1, y] == this
                 )
             {
-                if (this.x != 0 || this.y < players.Length - 1)
+                if (x != 0 || y < players.Length - 1)
                 {
-                    this.direction = Direction.Right;
+                    PlayerDirection = Direction.Right;
+                    return;
                 }
-                else
-                {
-                    this.direction = Direction.Left;
-                }
+
+                PlayerDirection = Direction.Left;
             }
         }
     }
