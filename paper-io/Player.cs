@@ -75,11 +75,11 @@ namespace paper_io
             {
                 if (x != 0 || y < players.Length - 1)
                 {
-                    PlayerDirection = Direction.Right;
+                    Turn(Direction.Right);
                     return false;
                 }
 
-                PlayerDirection = Direction.Left;
+                Turn(Direction.Left);
                 return true;
             }
 
@@ -98,7 +98,7 @@ namespace paper_io
             {
                 if (x == 0 || x == players.Length - 1)
                 {
-                    PlayerDirection = Direction.Right;
+                    Turn(Direction.Right);
                     return true;
                 }
             }
@@ -118,7 +118,7 @@ namespace paper_io
             {
                 if (x == 0 || x == players.Length - 1)
                 {
-                    PlayerDirection = Direction.Left;
+                    Turn(Direction.Left);
                     return true;
                 }
             }
@@ -145,6 +145,39 @@ namespace paper_io
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// Поворот игрока направо
+        /// </summary>
+        /// <param name="players"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        private void Turn(Direction turn)
+        {
+            // Здесь должна быть обработка исключений
+            if (turn != Direction.Right || turn != Direction.Left)
+            {
+                return;
+            }
+
+            switch(PlayerDirection)
+            {
+                case Direction.Up:
+                    PlayerDirection = turn == Direction.Right ? Direction.Right : Direction.Left;
+                break;
+                case Direction.Right:
+                    PlayerDirection = turn == Direction.Right ? Direction.Down : Direction.Up;
+                    break;
+                case Direction.Down:
+                    PlayerDirection = turn == Direction.Right ? Direction.Left : Direction.Right;
+                    break;
+                case Direction.Left:
+                    PlayerDirection = turn == Direction.Right ? Direction.Up : Direction.Down;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
