@@ -15,11 +15,10 @@ namespace paper_io
         /// <summary>
         /// Матрица игрового поля.
         /// </summary>
-        public Player[,] gamematrix;
+        public Player[,] Gamematrix;
         /// <summary>
         /// Перечисление игрокоов.
         /// </summary>
-        public Player[,] Gamematrix;
         List<Player> players = new List<Player>();
         /// <summary>
         /// Конструктор генерации поля игры
@@ -73,7 +72,6 @@ namespace paper_io
         /// Создаёт область игрока
         /// </summary>
         /// <param name="point">Левая верхняя точка матрицы 3 на 3.</param>
-        /// <param name="point">Правая верхняя точка матрицы 3 на 3.</param>
         private void CreatePlayer(Point point)
         {
             Player player = new Player(new Point(point.X + 1, point.Y + 1));

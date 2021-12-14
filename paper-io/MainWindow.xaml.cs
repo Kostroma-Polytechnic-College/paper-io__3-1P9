@@ -25,15 +25,33 @@ namespace paper_io
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Запуск игры 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void StartButton(object sender, RoutedEventArgs e)
+        {
+            string quantity = EnterField.Text;
+            int amount = int.Parse(quantity);
+            this.Hide();
+            new GameStart(amount).ShowDialog();
+            this.Show();
+        }
 
-        private void EnterField_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        /// <summary>
+        /// Поле ввода количества игроков
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EnterField_TextChanged(object sender, TextChangedEventArgs e)
         {
             string result = "";
             foreach (char item in EnterField.Text)
             {
                 if (char.IsNumber(item))
                     result += item;
-            }   
+            }
             EnterField.Text = result;
         }
     }
