@@ -15,7 +15,7 @@ namespace paper_io
         /// <summary>
         /// Матрица игрового поля.
         /// </summary>
-        public Player[,] Gamematrix;
+        public Player[,] GameMatrix;
         /// <summary>
         /// Перечисление игрокоов.
         /// </summary>
@@ -26,20 +26,26 @@ namespace paper_io
         /// <param name="players">Количество игроков</param>
         public Game(int players)
         {
-            Gamematrix = new Player[players * 10, players * 10];
-            for (int i = 0; i < players; i++) FindePoint();
+            GameMatrix = new Player[players * 10, players * 10];
+            for (int i = 0; i < players; i++)
+            {
+                Point point = FindPoint();
+                if (point.X == -1 || point.Y == -1)
+                    throw new Exception("Нет свободног места, для создания игрока!");
+                SpawnPlayer(point, new Player());
+            }
         }
         /// <summary>
         /// Находит координаты свободной матрицы
         /// </summary>
-        public void FindePoint()
+        public Point FindPoint()
         {
             List<Point> locations = new List<Point>();
-            for (int originalline = 0; originalline < Gamematrix.GetLength(0) - 2; originalline++)
+            for (int originalline = 0; originalline < GameMatrix.GetLength(0) - 2; originalline++)
             {
-                for (int column = 0; column < Gamematrix.GetLength(0) - 2; column++)
+                for (int column = 0; column < GameMatrix.GetLength(0) - 2; column++)
                 {
-                    if (ChekPoint(new Point(originalline, column)))
+                    if (CheckPoint(originalline, column))
                     {
                         locations.Add(new Point(originalline, column));
                     }
@@ -48,22 +54,21 @@ namespace paper_io
             if (locations.Count() != 0)
             {
                 Random random = new Random();
-                Point location = locations[random.Next(locations.Count())];
-
-                CreatePlayer(location);
+                return locations[random.Next(locations.Count())];
             }
+            return new Point(-1, -1);
         }
         /// <summary>
         /// Проводит проверку вхождения матрицы 3 на 3, начиная с верхнего левого угла.
         /// </summary>
         /// <returns>bool</returns>
-        private bool ChekPoint(Point point)
+        private bool CheckPoint(int line, int column)
         {
-            for (int l = (int)point.X; l < (int)point.X + 3; l++)
+            for (int l = line; l < line + 3; l++)
             {
-                for (int c = (int)point.Y; c < (int)point.Y + 3; c++)
+                for (int c = column; c < column + 3; c++)
                 {
-                    if (Gamematrix[l, c] != null) return false;
+                    if (GameMatrix[l, c] != null) return false;
                 }
             }
             return true;
@@ -72,15 +77,14 @@ namespace paper_io
         /// Создаёт область игрока
         /// </summary>
         /// <param name="point">Левая верхняя точка матрицы 3 на 3.</param>
-        private void CreatePlayer(Point point)
+        private void SpawnPlayer(Point point, Player player)
         {
-            Player player = new Player(new Point(point.X + 1, point.Y + 1));
-            players.Add(player);
+            player.Location = new Point(point.X + 1, point.Y + 1);
             for (int i = (int)point.X; i < point.X + 3; i++)
             {
                 for (int j = (int)point.Y; j < (int)point.Y + 3; j++)
                 {
-                    Gamematrix[i, j] = player;
+                    GameMatrix[i, j] = player;
                 }
             }
         }
