@@ -8,17 +8,20 @@ using System.Threading.Tasks;
 
 namespace paper_io
 {
+    /// <summary>
+    /// Перечисление возможного направления игрока
+    /// </summary>
+    public enum Direction
+    {
+        Up,
+        Right,
+        Down,
+        Left,
+    }
+
     class Player
     {
-        public enum Direction
-        {
-            Up,
-            Down,
-            Left,
-            Right
-        }
-
-        public Direction PlayerDirection;
+        public Direction Direction;
         /// <summary>
         /// Координаты игрока. (с типом double)
         /// </summary>
@@ -75,11 +78,11 @@ namespace paper_io
             {
                 if (x != 0 || y < players.Length - 1)
                 {
-                    Turn(Direction.Right);
+                    TurnRight();
                     return false;
                 }
 
-                Turn(Direction.Left);
+                TurnLeft();
                 return true;
             }
 
@@ -98,7 +101,7 @@ namespace paper_io
             {
                 if (x == 0 || x == players.Length - 1)
                 {
-                    Turn(Direction.Right);
+                    TurnRight();
                     return true;
                 }
             }
@@ -118,7 +121,7 @@ namespace paper_io
             {
                 if (x == 0 || x == players.Length - 1)
                 {
-                    Turn(Direction.Left);
+                    TurnLeft();
                     return true;
                 }
             }
@@ -153,31 +156,22 @@ namespace paper_io
         /// <param name="players"></param>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        private void Turn(Direction turn)
+        private void TurnRight(Direction turn)
         {
-            // Здесь должна быть обработка исключений
-            if (turn != Direction.Right || turn != Direction.Left)
-            {
-                return;
-            }
+            int turn = (int) Direction - 1;
+            Direction = turn < 0 ? Direction.Left : (Direction) turn;
+        }
 
-            switch(PlayerDirection)
-            {
-                case Direction.Up:
-                    PlayerDirection = turn == Direction.Right ? Direction.Right : Direction.Left;
-                break;
-                case Direction.Right:
-                    PlayerDirection = turn == Direction.Right ? Direction.Down : Direction.Up;
-                    break;
-                case Direction.Down:
-                    PlayerDirection = turn == Direction.Right ? Direction.Left : Direction.Right;
-                    break;
-                case Direction.Left:
-                    PlayerDirection = turn == Direction.Right ? Direction.Up : Direction.Down;
-                    break;
-                default:
-                    break;
-            }
+        /// <summary>
+        /// Поворот игрока налево
+        /// </summary>
+        /// <param name="players"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        private void TurnRight(Direction turn)
+        {
+            int turn = (int) Direction + 1;
+            Direction = turn > 3 ? Direction.Up : (Direction) turn;
         }
     }
 }
