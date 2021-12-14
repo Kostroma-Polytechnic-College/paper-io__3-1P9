@@ -19,24 +19,28 @@ namespace paper_io
         /// <summary>
         /// Матрица игрового поля. Хранит территорию игроков
         /// </summary>
-        public Player[,] gamematrix;
+        public Player[,] Gamematrix;
         List<Player> players = new List<Player>();
+        /// <summary>
+        /// Конструктор генерации поля игры
+        /// </summary>
+        /// <param name="players">Количество игроков</param>
         public Game(int players)
         {
-            gamematrix = new Player[players * 10, players * 10];
+            Gamematrix = new Player[players * 10, players * 10];
             for (int i = 0; i < players; i++) FindePoint();
         }
         /// <summary>
-        /// Ищет сектор 3 на 3 и если он есть, то вызывает метод CreatePlayer.
+        /// Находит координаты свободной матрицы
         /// </summary>
         public void FindePoint()
         {
             List<Point> locations = new List<Point>();
-            for (int originalline = 0; originalline < gamematrix.GetLength(0) - 2; originalline++)
+            for (int originalline = 0; originalline < Gamematrix.GetLength(0) - 2; originalline++)
             {
-                for (int column = 0; column < gamematrix.GetLength(0) - 2; column++)
+                for (int column = 0; column < Gamematrix.GetLength(0) - 2; column++)
                 {
-                    if (ChekPoint(originalline, column))
+                    if (ChekPoint(new Point(originalline, column)))
                     {
                         locations.Add(new Point(originalline, column));
                     }
@@ -51,26 +55,24 @@ namespace paper_io
             }
         }
         /// <summary>
-        /// Проверяет, входит ли подматрица 3 на 3 в главную матрицу игры, начиная с верхнего левого угла.
+        /// Проводит проверку вхождения матрицы 3 на 3, начиная с верхнего левого угла.
         /// </summary>
-        /// <param name="line">Координата X</param>
-        /// <param name="column">Координата Y</param>
         /// <returns>bool</returns>
-        private bool ChekPoint(int line, int column)
+        private bool ChekPoint(Point point)
         {
-            for (int l = line; l < line + 3; l++)
+            for (int l = (int)point.X; l < (int)point.X + 3; l++)
             {
-                for (int c = column; c < column + 3; c++)
+                for (int c = (int)point.Y; c < (int)point.Y + 3; c++)
                 {
-                    if (gamematrix[l, c] != null) return false;
+                    if (Gamematrix[l, c] != null) return false;
                 }
             }
             return true;
         }
         /// <summary>
-        /// Принимает количество игроков и делает поле размерностью n*n, где n- количество игроков * 10
+        /// Создаёт область игрока
         /// </summary>
-        /// <param name="n">Количество игроков</param>
+        /// <param name="point">Левая верхняя точка матрицы 3 на 3.</param>
         private void CreatePlayer(Point point)
         {
             Player player = new Player(new Point(point.X + 1, point.Y + 1));
@@ -79,7 +81,7 @@ namespace paper_io
             {
                 for (int j = (int)point.Y; j < (int)point.Y + 3; j++)
                 {
-                    gamematrix[i, j] = player;
+                    Gamematrix[i, j] = player;
                 }
             }
         }

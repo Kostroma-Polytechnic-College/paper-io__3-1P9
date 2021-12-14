@@ -17,10 +17,6 @@ namespace paper_io
         /// </summary>
         private bool life;
         /// <summary>
-        /// Цвет игрока.
-        /// </summary>
-        private Color color;
-        /// <summary>
         /// Конструктор игрока.
         /// </summary>
         /// <param name="point">Точка, по координатам которой появится игрок.</param>
