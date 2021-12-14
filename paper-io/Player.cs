@@ -53,10 +53,10 @@ namespace paper_io
             int x = (int)Location.X;
             int y = (int)Location.Y;
 
-            return checkAllSides(field, x, y)
-                || checkForwardLeft(field, x, y)
-                || checkForwardRight(field, x, y)
-                || checkForwardLeftRight(field, x, y);
+            return СheckAllSides(field, x, y)
+                || СheckForwardLeft(field, x, y)
+                || СheckForwardRight(field, x, y)
+                || СheckForwardLeftRight(field, x, y);
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace paper_io
         /// <param name="x">Настоящее положение игрока по оси X</param>
         /// <param name="y">Настоящее положение игрока по оси Y</param>
         /// <returns>Истина, если направление изменилось</returns>
-        bool checkForwardLeftRight(Player[,] field, int x, int y)
+        bool СheckForwardLeftRight(Player[,] field, int x, int y)
         {
             if (field[x, y + 1] == this
                 && field[x - 1, y] == this
@@ -94,7 +94,7 @@ namespace paper_io
         /// <param name="x">Настоящее положение игрока по оси X</param>
         /// <param name="y">Настоящее положение игрока по оси Y</param>
         /// <returns>Истина, если направление изменилось</returns>
-        bool checkForwardRight(Player[,] field, int x, int y)
+        bool СheckForwardRight(Player[,] field, int x, int y)
         {
             if (y < field.Length - 1)
             {
@@ -115,7 +115,7 @@ namespace paper_io
         /// <param name="x">Настоящее положение игрока по оси X</param>
         /// <param name="y">Настоящее положение игрока по оси Y</param>
         /// <returns>Истина, если направление изменилось</returns>
-        bool checkForwardLeft(Player[,] field, int x, int y)
+        bool СheckForwardLeft(Player[,] field, int x, int y)
         {
             if (y > 0)
             {
@@ -136,7 +136,7 @@ namespace paper_io
         /// <param name="x">Настоящее положение игрока по оси X</param>
         /// <param name="y">Настоящее положение игрока по оси Y</param>
         /// <returns>Истина, если направление изменилось</returns>
-        bool checkAllSides(Player[,] field, int x, int y)
+        bool СheckAllSides(Player[,] field, int x, int y)
         {
             if (field[x, y + 1] == this
                 && field[x - 1, y] == this
