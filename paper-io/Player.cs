@@ -156,7 +156,7 @@ namespace paper_io
         void TurnLeft()
         {
             int turn = (int)Direction - 1;
-            Direction = turn < 0 ? Direction.Left : (Direction)turn;
+            Direction = turn < 0 ? Direction.Left : (Direction) turn;
         }
 
         /// <summary>
@@ -165,7 +165,7 @@ namespace paper_io
         void TurnRight()
         {
             int turn = (int)Direction + 1;
-            Direction = turn > 3 ? Direction.Up : (Direction)turn;
+            Direction = turn > 3 ? Direction.Up : (Direction) turn;
         }
     }
 }
