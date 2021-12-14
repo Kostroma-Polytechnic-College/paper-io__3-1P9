@@ -13,11 +13,11 @@ namespace paper_io
     class Game
     {
         /// <summary>
-        /// Список всех игроков
+        /// Матрица игрового поля.
         /// </summary>
-        List<Player> Players = new List<Player>();
+        public Player[,] gamematrix;
         /// <summary>
-        /// Матрица игрового поля. Хранит территорию игроков
+        /// Перечисление игрокоов.
         /// </summary>
         public Player[,] Gamematrix;
         List<Player> players = new List<Player>();
@@ -73,6 +73,7 @@ namespace paper_io
         /// Создаёт область игрока
         /// </summary>
         /// <param name="point">Левая верхняя точка матрицы 3 на 3.</param>
+        /// <param name="point">Правая верхняя точка матрицы 3 на 3.</param>
         private void CreatePlayer(Point point)
         {
             Player player = new Player(new Point(point.X + 1, point.Y + 1));
