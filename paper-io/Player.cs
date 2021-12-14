@@ -47,39 +47,38 @@ namespace paper_io
         /// <summary>
         /// Метод, отвечающий за изменение направления движения игрока/бота
         /// </summary>
-        /// <param name="gamematrix"></param>
-        public void Bot(Player[,] players)
+        /// <param name="field">Игровое поле</param>
+        /// <returns>Истина, если направление изменилось</returns>
+        public bool Bot(Player[,] field)
         {
             int x = (int)Location.X;
             int y = (int)Location.Y;
 
-            if (!checkAllSides(players, x, y)
-                || !checkForwardLeft(players, x, y)
-                || !checkForwardRight(players, x, y)
-                || !checkForwardLeftRight(players, x, y))
-            {
-                return;
-            }
+            return checkAllSides(field, x, y)
+                || checkForwardLeft(field, x, y)
+                || checkForwardRight(field, x, y)
+                || checkForwardLeftRight(field, x, y);
         }
 
         /// <summary>
         /// Если впереди и слева и справа нет территории текущего игрока, то повернуть
         /// направо если там нет стены или повернуть налево если справа есть стена.Если впереди нет территории
         /// </summary>
-        /// <param name="players"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        private bool checkForwardLeftRight(Player[,] players, int x, int y)
+        /// <param name="field">Игровое поле</param>
+        /// <param name="x">Настоящее положение игрока по оси X</param>
+        /// <param name="y">Настоящее положение игрока по оси Y</param>
+        /// <returns>Истина, если направление изменилось</returns>
+        bool checkForwardLeftRight(Player[,] field, int x, int y)
         {
-            if (players[x, y + 1] == this
-                && players[x - 1, y] == this
-                && players[x + 1, y] == this
+            if (field[x, y + 1] == this
+                && field[x - 1, y] == this
+                && field[x + 1, y] == this
                 )
             {
-                if (x != 0 || y < players.Length - 1)
+                if (x != 0 || y < field.Length - 1)
                 {
                     TurnRight();
-                    return false;
+                    return true;
                 }
 
                 TurnLeft();
@@ -92,14 +91,15 @@ namespace paper_io
         /// <summary>
         /// Если впереди игрока находится стена и справа нет стены, то повернуть направо.
         /// </summary>
-        /// <param name="players"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        private bool checkForwardRight(Player[,] players, int x, int y)
+        /// <param name="field">Игровое поле</param>
+        /// <param name="x">Настоящее положение игрока по оси X</param>
+        /// <param name="y">Настоящее положение игрока по оси Y</param>
+        /// <returns>Истина, если направление изменилось</returns>
+        bool checkForwardRight(Player[,] field, int x, int y)
         {
-            if (y < players.Length - 1)
+            if (y < field.Length - 1)
             {
-                if (x == 0 || x == players.Length - 1)
+                if (x == 0 || x == field.Length - 1)
                 {
                     TurnRight();
                     return true;
@@ -112,14 +112,15 @@ namespace paper_io
         /// <summary>
         /// Если впереди текущего игрока находится стена и слева нет стены, то повернуть налево.
         /// </summary>
-        /// <param name="players"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        private bool checkForwardLeft(Player[,] players, int x, int y)
+        /// <param name="field">Игровое поле</param>
+        /// <param name="x">Настоящее положение игрока по оси X</param>
+        /// <param name="y">Настоящее положение игрока по оси Y</param>
+        /// <returns>Истина, если направление изменилось</returns>
+        bool checkForwardLeft(Player[,] field, int x, int y)
         {
             if (y > 0)
             {
-                if (x == 0 || x == players.Length - 1)
+                if (x == 0 || x == field.Length - 1)
                 {
                     TurnLeft();
                     return true;
@@ -132,16 +133,16 @@ namespace paper_io
         /// <summary>
         /// Если со всех сторон находится территория текущего игрока, то направление движения не менять
         /// </summary>
-        /// <param name="players"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <returns></returns>
-        private bool checkAllSides(Player[,] players, int x, int y)
+        /// <param name="field">Игровое поле</param>
+        /// <param name="x">Настоящее положение игрока по оси X</param>
+        /// <param name="y">Настоящее положение игрока по оси Y</param>
+        /// <returns>Истина, если направление изменилось</returns>
+        bool checkAllSides(Player[,] field, int x, int y)
         {
-            if (players[x, y + 1] == this
-                && players[x - 1, y] == this
-                && players[x + 1, y] == this
-                && players[x, y - 1] == this
+            if (field[x, y + 1] == this
+                && field[x - 1, y] == this
+                && field[x + 1, y] == this
+                && field[x, y - 1] == this
                 )
             {
                 return false;
@@ -153,10 +154,7 @@ namespace paper_io
         /// <summary>
         /// Поворот игрока налево
         /// </summary>
-        /// <param name="players"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        private void TurnLeft(Direction turn)
+        void TurnLeft()
         {
             int turn = (int) Direction - 1;
             Direction = turn < 0 ? Direction.Left : (Direction) turn;
@@ -165,10 +163,7 @@ namespace paper_io
         /// <summary>
         /// Поворот игрока направо
         /// </summary>
-        /// <param name="players"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        private void TurnRight(Direction turn)
+        void TurnRight()
         {
             int turn = (int) Direction + 1;
             Direction = turn > 3 ? Direction.Up : (Direction) turn;
