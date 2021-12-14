@@ -47,8 +47,8 @@ namespace paper_io
         /// <param name="gamematrix"></param>
         public void Bot(Player[,] players)
         {
-            int x = (int) Location.X;
-            int y = (int) Location.Y;
+            int x = Convert.ToInt32(Location.X);
+            int y = Convert.ToInt32(Location.Y);
 
             /* Если со всех сторон находится территория текущего игрока, то направление 
                движения не менять*/
