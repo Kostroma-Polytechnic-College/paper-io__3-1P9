@@ -151,19 +151,19 @@ namespace paper_io
         }
 
         /// <summary>
-        /// Поворот игрока направо
+        /// Поворот игрока налево
         /// </summary>
         /// <param name="players"></param>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        private void TurnRight(Direction turn)
+        private void TurnLeft(Direction turn)
         {
             int turn = (int) Direction - 1;
             Direction = turn < 0 ? Direction.Left : (Direction) turn;
         }
 
         /// <summary>
-        /// Поворот игрока налево
+        /// Поворот игрока направо
         /// </summary>
         /// <param name="players"></param>
         /// <param name="x"></param>
