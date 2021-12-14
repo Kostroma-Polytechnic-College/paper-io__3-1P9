@@ -28,8 +28,9 @@ namespace paper_io
         {
             string quantity = EnterField.Text;
             int amount = int.Parse(quantity);
-            new GameStart(amount).Show();
-            Close();
+            this.Hide();
+            new GameStart(amount).ShowDialog();
+            this.Show();
         }
 
         private void EnterField_TextChanged(object sender, TextChangedEventArgs e)
