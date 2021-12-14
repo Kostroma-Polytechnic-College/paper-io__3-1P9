@@ -24,6 +24,12 @@ namespace paper_io
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Запуск игры 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void StartButton(object sender, RoutedEventArgs e)
         {
             string quantity = EnterField.Text;
@@ -33,6 +39,11 @@ namespace paper_io
             this.Show();
         }
 
+        /// <summary>
+        /// Поле ввода количества игроков
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EnterField_TextChanged(object sender, TextChangedEventArgs e)
         {
             string result = "";
