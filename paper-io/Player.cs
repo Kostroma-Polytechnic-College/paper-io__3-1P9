@@ -47,41 +47,27 @@ namespace paper_io
         /// <param name="gamematrix"></param>
         public void Bot(Player[,] players)
         {
-            int x = Convert.ToInt32(Location.X);
-            int y = Convert.ToInt32(Location.Y);
+            int x = (int)Location.X;
+            int y = (int)Location.Y;
 
-            /* Если со всех сторон находится территория текущего игрока, то направление 
-               движения не менять*/
-            if (players[x, y + 1] == this
-                && players[x - 1, y] == this
-                && players[x + 1, y] == this
-                && players[x, y - 1] == this
-                )
+            if (!checkAllSides(players, x, y)
+                || !checkForwardLeft(players, x, y)
+                || !checkForwardRight(players, x, y)
+                || !checkForwardLeftRight(players, x, y))
             {
                 return;
             }
+        }
 
-            /* Если впереди текущего игрока находится стена и слева нет стены, то повернуть налево. */
-            if (y > 0) { 
-                if (x == 0 || x == players.Length - 1)
-                {
-                    PlayerDirection = Direction.Left;
-                    return;
-                }
-            }
-
-            /*  Если впереди игрока находится стена и справа нет стены, то повернуть направо. */
-            if (y < players.Length - 1)
-            {
-                if (x == 0 || x == players.Length - 1)
-                {
-                    PlayerDirection = Direction.Right;
-                    return;
-                }
-            }
-
-            /* Если впереди и слева и справа нет территории текущего игрока, то повернуть
-               направо если там нет стены или повернуть налево если справа есть стена. Если впереди нет территории  */
+        /// <summary>
+        /// Если впереди и слева и справа нет территории текущего игрока, то повернуть
+        /// направо если там нет стены или повернуть налево если справа есть стена.Если впереди нет территории
+        /// </summary>
+        /// <param name="players"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        private bool checkForwardLeftRight(Player[,] players, int x, int y)
+        {
             if (players[x, y + 1] == this
                 && players[x - 1, y] == this
                 && players[x + 1, y] == this
@@ -90,11 +76,75 @@ namespace paper_io
                 if (x != 0 || y < players.Length - 1)
                 {
                     PlayerDirection = Direction.Right;
-                    return;
+                    return false;
                 }
 
                 PlayerDirection = Direction.Left;
+                return true;
             }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Если впереди игрока находится стена и справа нет стены, то повернуть направо.
+        /// </summary>
+        /// <param name="players"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        private bool checkForwardRight(Player[,] players, int x, int y)
+        {
+            if (y < players.Length - 1)
+            {
+                if (x == 0 || x == players.Length - 1)
+                {
+                    PlayerDirection = Direction.Right;
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Если впереди текущего игрока находится стена и слева нет стены, то повернуть налево.
+        /// </summary>
+        /// <param name="players"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        private bool checkForwardLeft(Player[,] players, int x, int y)
+        {
+            if (y > 0)
+            {
+                if (x == 0 || x == players.Length - 1)
+                {
+                    PlayerDirection = Direction.Left;
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Если со всех сторон находится территория текущего игрока, то направление движения не менять
+        /// </summary>
+        /// <param name="players"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        private bool checkAllSides(Player[,] players, int x, int y)
+        {
+            if (players[x, y + 1] == this
+                && players[x - 1, y] == this
+                && players[x + 1, y] == this
+                && players[x, y - 1] == this
+                )
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
