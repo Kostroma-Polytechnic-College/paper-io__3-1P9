@@ -6,7 +6,22 @@
         xmlns:local="clr-namespace:paper_io"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Margin="0,0,-6.4,0" Height="420" VerticalAlignment="Bottom">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="19*"/>
+            <ColumnDefinition Width="347*"/>
+            <ColumnDefinition Width="181*"/>
+            <ColumnDefinition Width="252*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="387*"/>
+        </Grid.RowDefinitions>
+        <Button Content="Запустить игру" HorizontalAlignment="Left" Margin="13.352,171,0,0" VerticalAlignment="Top" Width="148" Height="54" Grid.Row="2" Grid.Column="3" Click="StartButton"/>
+        <TextBox x:Name="EnterField" Text="{Binding ElementName=slValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" Margin="225.8,189,43.4,168" Grid.Column="1" RenderTransformOrigin="-5.618,4.462" Grid.Row="2" FontSize="20" TextChanged="EnterField_TextChanged"  />
+        <Slider Minimum="2" Maximum="10" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" Name="slValue" Margin="143.8,234,124.648,86" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" />
+        <Label Content="Укажите количество игроков" HorizontalAlignment="Left" Margin="125.8,101,0,0" VerticalAlignment="Top" Height="55" Width="278" FlowDirection="RightToLeft" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="1"/>
+
     </Grid>
 </Window>
