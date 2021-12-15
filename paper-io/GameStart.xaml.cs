@@ -33,10 +33,10 @@ namespace paper_io
         /// <param name="p">Направление игрока</param>
         private void GetPlayerGetKeyPress(Player p)
         {
-            if (p.Direction == Direction.Up && direction == Direction.Down
-                || p.Direction == Direction.Down && direction == Direction.Up
-                || p.Direction == Direction.Left && direction == Direction.Right 
-                || p.Direction == Direction.Right && direction == Direction.Left)
+            if ((p.Direction == Direction.Up && direction == Direction.Down)
+                || (p.Direction == Direction.Down && direction == Direction.Up)
+                || (p.Direction == Direction.Left && direction == Direction.Right) 
+                || (p.Direction == Direction.Right && direction == Direction.Left))
             {
                 return; 
             }
@@ -70,8 +70,7 @@ namespace paper_io
                 default:
                     break;
             }
-            
-            ///Дебаг
+
             Debug.WriteLine($"WindowKeyUp->{direction}");
         }
 

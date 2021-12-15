@@ -195,6 +195,5 @@ namespace paper_io
                 Debug.WriteLine($"GetKeyPress->{Direction}");
             }
         }
-
     }
 }
