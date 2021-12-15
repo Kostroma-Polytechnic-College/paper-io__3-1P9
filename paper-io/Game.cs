@@ -79,5 +79,37 @@ namespace paper_io
                 }
             }
         }
+
+        /// <summary>
+        /// Метод, возвращающий игровую область 31 на 17 по указанным координатам
+        /// </summary>
+        /// <param name="point">Координаты центра искомой области</param>
+        /// <returns>Игровая область 31 на 17 - двумерный массив игроков</returns>
+        private Player[,] GetGameField(Point point)
+        {
+            Player[,] field = new Player[31, 17];
+
+            // Координаты верхнего левого угла области отрисовки
+            // Проверка на валидность координат не проводится, т.к в задании указана строгая формула
+            Point topLeft = new Point(point.X - 8, point.Y - 15);
+
+            // Перебор ячеек от рассчитанной координаты с количеством итераций 31 и 17
+            // Внешние переменные для хранения индексов для возвращаемой матрицы
+            int x = 0;
+            int y = 0;
+            for (int i = (int)topLeft.X; i < (int)topLeft.X + 31; i++)
+            {
+                
+                for (int j = (int)topLeft.Y; i < (int)topLeft.Y + 17; i++)
+                {
+                    field[x, y] = gamematrix[i, j];
+                    y++;
+                }
+                x++;
+            }
+
+            return field;
+        }
+
     }
 }
