@@ -36,13 +36,13 @@ namespace paper_io
         /// </summary>
         private Color color;
         private bool isBot = true;
+
         /// <summary>
         /// Конструктор игрока.
         /// </summary>
-        /// <param name="point">Точка, по координатам которой появится игрок.</param>
-        public Player(Point point, bool isBot = true)
+        /// <param name="isBot">Является ли игрок ботом.</param>
+        public Player(bool isBot = true)
         {
-            Location = point;
             life = true;
             this.isBot = isBot;
         }
@@ -173,7 +173,7 @@ namespace paper_io
         }
         public delegate void GetPressKeyDelegate(Player p);
         public event GetPressKeyDelegate GetKeyPress;
-        void Step(Player[,] map)
+        public void Step(Player[,] map)
         {
             if (this.isBot)
             {
@@ -182,7 +182,7 @@ namespace paper_io
             else
             {
                 GetKeyPress(this);
-                Debug.WriteLine(Direction);
+                Debug.WriteLine($"GetKeyPress->{Direction}");
             }
         }
 
