@@ -99,7 +99,6 @@ namespace paper_io
             int y = 0;
             for (int i = (int)topLeft.X; i < (int)topLeft.X + 31; i++)
             {
-                
                 for (int j = (int)topLeft.Y; i < (int)topLeft.Y + 17; i++)
                 {
                     field[x, y] = gamematrix[i, j];
