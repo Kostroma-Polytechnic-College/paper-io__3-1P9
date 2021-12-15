@@ -8,23 +8,8 @@ using System.Threading.Tasks;
 
 namespace paper_io
 {
-    /// <summary>
-    /// Перечисление возможного направления игрока
-    /// </summary>
-    public enum Direction
-    {
-        Up,
-        Right,
-        Down,
-        Left,
-    }
-
     class Player
     {
-        public Direction Direction;
-        /// <summary>
-        /// Координаты игрока. (с типом double)
-        /// </summary>
         public Point Location;
         /// <summary>
         /// Жив ли игрок?
