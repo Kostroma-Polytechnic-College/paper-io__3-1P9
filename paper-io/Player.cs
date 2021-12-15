@@ -10,6 +10,9 @@ namespace paper_io
 {
     class Player
     {
+        /// <summary>
+        /// Координаты игрока. (с типом double)
+        /// </summary>
         public Point Location;
         /// <summary>
         /// Жив ли игрок?
