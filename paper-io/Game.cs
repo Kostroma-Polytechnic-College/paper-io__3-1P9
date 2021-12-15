@@ -43,7 +43,7 @@ namespace paper_io
             List<Point> locations = new List<Point>();
             for (int originalline = 0; originalline < GameMatrix.GetLength(0) - 2; originalline++)
             {
-                for (int column = 0; column < GameMatrix.GetLength(0) - 2; column++)
+                for (int column = 0; column < GameMatrix.GetLength(1) - 2; column++)
                 {
                     if (CheckPoint(originalline, column))
                     {
