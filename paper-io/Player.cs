@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace paper_io
 {
@@ -19,7 +20,7 @@ namespace paper_io
         Left,
     }
 
-    class Player
+    public class Player
     {
         public Direction Direction;
         /// <summary>
@@ -34,13 +35,16 @@ namespace paper_io
         /// Цвет игрока.
         /// </summary>
         private Color color;
+        private bool isBot = true;
+
         /// <summary>
         /// Конструктор игрока.
         /// </summary>
-        /// <param name="point">Точка, по координатам которой появится игрок.</param>
-        public Player()
+        /// <param name="isBot">Является ли игрок ботом.</param>
+        public Player(bool isBot = true)
         {
             life = true;
+            this.isBot = isBot;
         }
 
         /// <summary>
@@ -155,8 +159,8 @@ namespace paper_io
         /// </summary>
         void TurnLeft()
         {
-            int turn = (int) Direction - 1;
-            Direction = turn < 0 ? Direction.Left : (Direction) turn;
+            int turn = (int)Direction - 1;
+            Direction = turn < 0 ? Direction.Left : (Direction)turn;
         }
 
         /// <summary>
@@ -164,8 +168,32 @@ namespace paper_io
         /// </summary>
         void TurnRight()
         {
-            int turn = (int) Direction + 1;
-            Direction = turn > 3 ? Direction.Up : (Direction) turn;
+            int turn = (int)Direction + 1;
+            Direction = turn > 3 ? Direction.Up : (Direction)turn;
+        }
+        
+        /// <summary>
+        /// Получение нажатой клавиши
+        /// </summary>
+        /// <param name="p"></param>
+        public delegate void GetPressKeyDelegate(Player p);
+        public event GetPressKeyDelegate GetKeyPress;
+        
+        /// <summary>
+        /// Поток игры
+        /// </summary>
+        /// <param name="map"></param>
+        public void Step(Player[,] map)
+        {
+            if (this.isBot)
+            {
+                Bot(map);
+            }
+            else
+            {
+                GetKeyPress(this);
+                Debug.WriteLine($"GetKeyPress->{Direction}");
+            }
         }
     }
 }

@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:paper_io"
         mc:Ignorable="d"
-        Title="GameStart" Height="450" Width="800">
+        Title="GameStart" Height="450" Width="800" KeyUp="WindowKeyUp">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="145,50,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
     </Grid>
 </Window>

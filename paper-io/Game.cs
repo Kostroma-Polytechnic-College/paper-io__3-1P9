@@ -23,16 +23,20 @@ namespace paper_io
         /// <summary>
         /// Конструктор генерации поля игры
         /// </summary>
-        /// <param name="players">Количество игроков</param>
-        public Game(int players)
+        /// <param name="amount">Количество игроков</param>
+        public Game(int amount)
         {
-            GameMatrix = new Player[players * 10, players * 10];
-            for (int i = 0; i < players; i++)
+            GameMatrix = new Player[amount * 10, amount * 10];
+
+            for (int i = 0; i < amount; i++)
             {
                 Point point = FindPoint();
                 if (point.X == -1 || point.Y == -1)
                     throw new Exception("Нет свободног места, для создания игрока!");
-                SpawnPlayer(point, new Player());
+
+                Player player = new Player(i != 0);
+                SpawnPlayer(point, player);
+                players.Add(player);
             }
         }
         /// <summary>
@@ -87,6 +91,14 @@ namespace paper_io
                     GameMatrix[i, j] = player;
                 }
             }
+        }
+       
+        /// <summary>
+        /// Свойство, для отличия Игркоа от ботов
+        /// </summary>
+        public Player GetPlayer
+        {
+            get { return players[0]; }
         }
     }
 }
