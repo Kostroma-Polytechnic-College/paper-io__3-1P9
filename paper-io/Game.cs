@@ -79,5 +79,9 @@ namespace paper_io
                 }
             }
         }
+        public Player GetPlayer
+        {
+            get { return players[0]; }
+        }
     }
 }
