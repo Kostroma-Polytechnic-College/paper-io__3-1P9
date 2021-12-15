@@ -171,8 +171,18 @@ namespace paper_io
             int turn = (int)Direction + 1;
             Direction = turn > 3 ? Direction.Up : (Direction)turn;
         }
+        
+        /// <summary>
+        /// Получение нажатой клавиши
+        /// </summary>
+        /// <param name="p"></param>
         public delegate void GetPressKeyDelegate(Player p);
         public event GetPressKeyDelegate GetKeyPress;
+        
+        /// <summary>
+        /// Поток игры
+        /// </summary>
+        /// <param name="map"></param>
         public void Step(Player[,] map)
         {
             if (this.isBot)

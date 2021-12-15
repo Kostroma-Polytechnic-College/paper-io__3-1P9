@@ -27,6 +27,10 @@ namespace paper_io
             game.GetPlayer.GetKeyPress += GetPlayerGetKeyPress;
         }
 
+        /// <summary>
+        /// Обработка исключения, которая не позволяет поворачивать в противоположную сторону
+        /// </summary>
+        /// <param name="p">Направление игрока</param>
         private void GetPlayerGetKeyPress(Player p)
         {
             if (p.Direction == Direction.Up && direction == Direction.Down
@@ -41,6 +45,12 @@ namespace paper_io
 
         Direction direction;
         Game game;
+        
+        /// <summary>
+        /// Выбор направления в соответствии с нажатой стрелкой
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void WindowKeyUp(object sender, KeyEventArgs e)
         {
             switch (e.Key)
@@ -60,9 +70,16 @@ namespace paper_io
                 default:
                     break;
             }
+            
+            ///Дебаг
             Debug.WriteLine($"WindowKeyUp->{direction}");
         }
 
+        /// <summary>
+        /// Заглушка многопоточности
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             game.GetPlayer.Step(game.GameMatrix);

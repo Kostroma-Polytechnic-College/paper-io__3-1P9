@@ -92,6 +92,10 @@ namespace paper_io
                 }
             }
         }
+       
+        /// <summary>
+        /// Свойство, для отличия Игркоа от ботов
+        /// </summary>
         public Player GetPlayer
         {
             get { return players[0]; }
