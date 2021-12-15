@@ -38,9 +38,8 @@ namespace paper_io
         /// Конструктор игрока.
         /// </summary>
         /// <param name="point">Точка, по координатам которой появится игрок.</param>
-        public Player(Point point)
+        public Player()
         {
-            Location = point;
             life = true;
         }
 
