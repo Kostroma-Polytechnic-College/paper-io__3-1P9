@@ -109,6 +109,5 @@ namespace paper_io
 
             return field;
         }
-
     }
 }
